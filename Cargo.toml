@@ -1,0 +1,14 @@
+[workspace]
+
+members = [
+    "crates/primitives",
+    "crates/types",
+    "crates/chain",
+    "crates/state",
+    "crates/vm",
+    "crates/consensus",
+    "crates/p2p",
+    "crates/storage",
+    "crates/node",
+    "cli"
+]

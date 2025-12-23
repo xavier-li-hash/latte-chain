@@ -1,0 +1,11 @@
+[package]
+name = "latte-state"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+latte-primitives = { path = "../primitives" }
+latte-types = { path = "../types" }
+
+thiserror = "1"
+serde = { version = "1", features = ["derive"] }
