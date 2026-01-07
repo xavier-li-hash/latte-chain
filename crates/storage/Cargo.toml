@@ -1,6 +1,16 @@
 [package]
-name = "storage"
+name = "latte-storage"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+latte-chain = { path = "../chain" }
+latte-primitives = { path = "../primitives" }
+latte-types = { path = "../types" }
+latte-codec = { path = "../codec" }
+
+serde = { version = "1", features = ["derive"] }
+rocksdb = "0.24.0"
+postcard = { version = "1.0", features = ["alloc"] }
+once_cell = "1.18"
+thiserror = "2.0.17"

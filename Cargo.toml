@@ -10,5 +10,5 @@ members = [
     "crates/p2p",
     "crates/storage",
     "crates/node",
-    "cli"
-]
+    "cli",
+    "crates/codec"]

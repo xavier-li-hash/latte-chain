@@ -12,7 +12,7 @@ pub enum BlockchainError {
 
 impl std::error::Error for BlockchainError {}
 
-impl fmt::Display for BlockchainError {
+impl Display for BlockchainError {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         match self {
             BlockchainError::InvalidTransaction => {
