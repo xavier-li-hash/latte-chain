@@ -1,4 +1,5 @@
-use latte_primitives::hash::Hash256;
+use latte_codec::codec::Codec;
+use latte_primitives::hash::{Hash256, sha256};
 use serde::{Deserialize, Serialize};
 use std::hash::Hash;
 
@@ -24,4 +25,11 @@ pub struct BlockHeader {
     pub tx_root: Hash256,
     pub number: u64, // 高度，与height是一个东西
     pub timestamp: u64, // second
+}
+
+impl BlockHeader {
+    pub fn hash_with<C: Codec>(&self, codec: &C) -> Result<Hash256, String> {
+        let bytes = codec.encode(self)?;
+        Ok(sha256(&bytes))
+    }
 }

@@ -116,8 +116,6 @@ impl<'a, S: AccountWriter> Interpreter<'a, S> {
                     break;
                 }
             }
-
-            self.pc += 1;
         }
 
         Ok(())

@@ -467,6 +467,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "chrono",
+ "latte-codec",
  "latte-primitives",
  "latte-state",
  "latte-types",
@@ -527,6 +528,7 @@ name = "latte-types"
 version = "0.1.0"
 dependencies = [
  "hex",
+ "latte-codec",
  "latte-primitives",
  "serde",
 ]

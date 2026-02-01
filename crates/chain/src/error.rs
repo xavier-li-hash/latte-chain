@@ -1,5 +1,5 @@
 use thiserror::Error;
-use crate::storage::BlockStorage;
+use crate::storage_error::StorageError;
 
 #[derive(Debug, Error)]
 pub enum ChainError {
@@ -29,5 +29,8 @@ pub enum ChainError {
 
     #[error("block timeout error")]
     TimeoutError,
+
+    #[error("storage error: {0}")]
+    Storage(#[from] StorageError),
 
 }

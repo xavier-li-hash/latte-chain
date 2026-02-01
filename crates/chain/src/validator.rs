@@ -2,9 +2,9 @@ use crate::blockchain::Blockchain;
 use crate::error::ChainError;
 use crate::merkle;
 use chrono::{Duration, Utc};
+use latte_codec::codec::Codec;
 use latte_primitives::hash::Hash256;
 use latte_types::block::Block;
-use std::hash::Hash;
 
 pub struct BlockValidator {}
 
@@ -19,11 +19,11 @@ pub struct BlockValidator {}
 ///
 /// 原则：校验应该从易到难，避免不必要的计算
 impl BlockValidator {
-    pub fn verify_block(
+    pub fn verify_block<C: Codec>(
         &self,
         block: &Block,
         parent_hash256: Hash256,
-        blockchain: &Blockchain,
+        blockchain: &Blockchain<C>,
     ) -> Result<(), ChainError> {
         // 基础信息验证
         self.validate_basic_info(block, parent_hash256, blockchain)?;
@@ -35,11 +35,11 @@ impl BlockValidator {
         Ok(())
     }
 
-    fn validate_basic_info(
+    fn validate_basic_info<C: Codec>(
         &self,
         block: &Block,
         parent_hash: Hash256,
-        blockchain: &Blockchain,
+        blockchain: &Blockchain<C>,
     ) -> Result<(), ChainError> {
         let header = &block.header;
         let hash256 = header.parent_hash;
@@ -51,7 +51,7 @@ impl BlockValidator {
         // 校验高度
         match blockchain.get_block(parent_hash) {
             Some(parent_block) => {
-                if parent_block.header.number != header.number {
+                if parent_block.header.number + 1 != header.number {
                     return Err(ChainError::InvalidHeight);
                 }
             }

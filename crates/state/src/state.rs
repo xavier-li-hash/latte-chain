@@ -1,4 +1,5 @@
 //! WorldState 抽象
+// 维护账号的状态
 
 use latte_primitives::address::Address;
 use latte_types::account::Account;

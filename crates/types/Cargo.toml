@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 latte-primitives = { path = "../primitives" }
+latte-codec = { path = "../codec" }
 serde = { version = "1", features = ["derive"] }
 
 hex = "0.4"
